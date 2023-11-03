@@ -22,6 +22,10 @@ body *::before {
 }
 
 body {
+  min-height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin: 0;
   padding: 0;
 }
@@ -47,9 +51,4 @@ button {
   padding: 0;
   margin: 0;
   border: transparent;
-  outline: transparent;
-}
-
-button:focus-visible {
-  outline: #0d00ff;
 }
