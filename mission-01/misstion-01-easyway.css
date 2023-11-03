@@ -30,11 +30,11 @@
   border-radius: 8px;
 
   background-color: white;
+  transition: 300ms cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .card:hover {
-  box-shadow: 0px 0px 16px 6px #4d4f608d, 1px 1px 2px 1px #4646478a;
-  transition: 500ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  box-shadow: 0px 0px 16px 6px #5f5f638d, 1px 1px 2px 1px #68686954;
 }
 
 /* card description styles */
@@ -115,8 +115,8 @@
   white-space: nowrap;
   opacity: 0;
   transform: translateY(-50%) translateX(-80px);
-  transition: opacity 0ms;
-  transition-delay: 200ms ease;
+
+  transition: opacity 100ms 200ms;
 }
 
 .purchase-btn:hover .purchase-text,
