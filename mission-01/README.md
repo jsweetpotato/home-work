@@ -72,8 +72,8 @@ html 마크업은 아래의 구조로 작성했습니다.
 
 포지션은 왼쪽 하단에 일정한 간격을 유지해서 놓기 위해, 속성으로 absolute 주고 left와 bottom으로 조정했습니다.
 
-![버튼](image-4.png)
-![호버 버튼](image-2.png)
+![버튼](../readme-images/mission-01-button-default.png)
+![호버 버튼](../readme-images/mission-01-button-hover.png)
 
 ```css
 .btn-wrapper {
