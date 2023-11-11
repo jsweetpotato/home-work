@@ -57,12 +57,14 @@ form {
 .input-wrapper {
   position: relative;
 }
-.input-wrapper:nth-child(1) {
+.input-wrapper:has(.email) {
   margin-bottom: 40px;
 }
-.input-wrapper:nth-child(2) {
+.input-wrapper:has(.password) {
   margin-bottom: 10px;
 }
+
+/* input 기본 세팅 */
 .input-wrapper input {
   display: block;
   width: 100%;
@@ -78,7 +80,6 @@ form {
     color: transparent;
     transform: translateY(1px);
   }
-
   &:focus::placeholder {
     color: #adadad;
   }
