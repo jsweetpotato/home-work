@@ -117,7 +117,7 @@ form {
   content: "";
   position: absolute;
   display: inline-block;
-  top: 25%;
+  top: 20%;
   right: 8px;
   width: var(--icon-box-size);
   height: var(--icon-box-size);
@@ -139,7 +139,7 @@ form {
   display: inline-block;
   width: var(--icon-box-size);
   height: var(--icon-box-size);
-  top: 25%;
+  top: 20%;
   right: 32px;
   background: no-repeat center / var(--icon-image-size);
   background-image: url("./assets/eye-open.svg");
@@ -234,7 +234,7 @@ form {
     grid-template-columns: 1fr 1fr;
   }
   .login-container {
-    justify-content: center;
+    justify-content: space-around;
     gap: 40px;
   }
 
