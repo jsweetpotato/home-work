@@ -221,6 +221,14 @@ form {
   }
 }
 
+.login-btn:disabled {
+  user-select: none;
+  pointer-events: none;
+  color: #83817d;
+  background-color: #fefefe;
+  opacity: 0.8;
+}
+
 @media (min-width: 540px) {
   .btn-container {
     grid-template-columns: 1fr 1fr;
