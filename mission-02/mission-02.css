@@ -92,6 +92,12 @@ form {
 }
 
 /* 이메일, 패스워드 */
+.email:focus,
+.password:focus {
+  outline: none;
+  box-shadow: 0 1px 0px 0px #fff;
+}
+
 .email + label,
 .password + label {
   transition: 100ms ease-in;

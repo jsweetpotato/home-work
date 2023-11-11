@@ -1,9 +1,9 @@
 const $emailInput = document.querySelector("#email");
 const $emailWrapper = document.querySelector(".input-wrapper:nth-child(1)");
 
-const $passwordInput = document.querySelector("#password");
-const $passwordWrapper = document.querySelector(".input-wrapper:nth-child(2)");
-const $togglePasswordType = document.querySelector(".toggle-password-type");
+const $pwInput = document.querySelector("#password");
+const $pwWrapper = document.querySelector(".input-wrapper:nth-child(2)");
+const $togglePwType = document.querySelector(".toggle-password-type");
 
 const STATE_CLASS_POSITION = 1;
 const STATE_EMPTY = "empty";
@@ -29,31 +29,31 @@ const validateEmail = () => {
 };
 
 const validatePassword = () => {
-  if ($passwordInput.value === "")
-    $passwordWrapper.classList.replace(
-      $passwordWrapper.classList[STATE_CLASS_POSITION],
+  if ($pwInput.value === "")
+    $pwWrapper.classList.replace(
+      $pwWrapper.classList[STATE_CLASS_POSITION],
       STATE_EMPTY
     );
   else if (
-    $passwordInput.value.length >= 6 &&
-    /\d/.test($passwordInput.value) &&
-    /[a-zA-Z]/.test($passwordInput.value)
+    $pwInput.value.length >= 6 &&
+    /\d/.test($pwInput.value) &&
+    /[a-zA-Z]/.test($pwInput.value)
   )
-    $passwordWrapper.classList.replace(
-      $passwordWrapper.classList[STATE_CLASS_POSITION],
+    $pwWrapper.classList.replace(
+      $pwWrapper.classList[STATE_CLASS_POSITION],
       STATE_VALID
     );
   else
-    $passwordWrapper.classList.replace(
-      $passwordWrapper.classList[STATE_CLASS_POSITION],
+    $pwWrapper.classList.replace(
+      $pwWrapper.classList[STATE_CLASS_POSITION],
       STATE_INVALID
     );
 };
 
 const togglePasswordVisibility = () => {
-  $passwordInput.type === "password"
-    ? ($passwordInput.type = "text")
-    : ($passwordInput.type = "password");
+  $pwInput.type === "password"
+    ? ($pwInput.type = "text")
+    : ($pwInput.type = "password");
 };
 
 const forKeyboard = (e) => {
@@ -63,6 +63,6 @@ const forKeyboard = (e) => {
 };
 
 $emailInput.oninput = validateEmail;
-$passwordInput.oninput = validatePassword;
-$togglePasswordType.onclick = togglePasswordVisibility;
-$togglePasswordType.onkeyup = forKeyboard;
+$pwInput.oninput = validatePassword;
+$togglePwType.onclick = togglePasswordVisibility;
+$togglePwType.onkeyup = forKeyboard;
