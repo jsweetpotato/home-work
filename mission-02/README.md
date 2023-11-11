@@ -183,6 +183,33 @@ valid 상태
 ```
 
 <br>
+media qeury 반응형 설정
+
+```css
+@media (min-width: 540px) {
+  .btn-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .login-container {
+    justify-content: center;
+    gap: 40px;
+  }
+
+  form {
+    gap: 20px;
+  }
+
+  input {
+    font-size: 1.125rem;
+  }
+
+  .btn-container {
+    margin-top: 40px;
+  }
+}
+```
+
+<br>
 <br>
 <br>
 
