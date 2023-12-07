@@ -1,0 +1,252 @@
+@import "../utils.css";
+
+:root {
+  --icon-box-size: 24px;
+  --icon-image-size: 16px;
+  --clr-warning: #ffb469;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
+}
+
+::selection {
+  background-color: #8ca1ff90;
+}
+
+/* 로그인 컨테이너 */
+.login-container {
+  color: white;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-block: clamp(40px, 50vw, 100px);
+  align-items: center;
+  background: url("./assets/bg.jpg") no-repeat center / cover;
+}
+.title-wrapper {
+  text-align: center;
+}
+.title-wrapper h1 {
+  font-weight: 100;
+  font-size: 2.25rem;
+}
+.title-wrapper h3 {
+  margin: 0;
+  font-size: 1.125rem;
+}
+.title-wrapper > p {
+  margin-top: 4px;
+  font-weight: 300;
+  font-size: 0.75rem;
+}
+
+form {
+  width: clamp(240px, 80vw, 560px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* input-wrapper 기본 세팅 */
+.input-wrapper {
+  position: relative;
+}
+.input-wrapper:has(.email) {
+  margin-bottom: 40px;
+}
+.input-wrapper:has(.password) {
+  margin-bottom: 10px;
+}
+
+/* input 기본 세팅 */
+.input-wrapper input {
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 8px 10px;
+  font-size: 1rem;
+  border: 0;
+  margin: 0;
+  color: white;
+  border-bottom: 1px solid currentColor;
+  background-color: transparent;
+  &::placeholder {
+    color: transparent;
+    transform: translateY(1px);
+  }
+  &:focus::placeholder {
+    color: #adadad;
+  }
+}
+
+.input-wrapper:not(.id-save) label {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 50%;
+}
+
+/* 이메일, 패스워드 */
+.email:focus,
+.password:focus {
+  outline: none;
+  box-shadow: 0 1px 0px 0px #fff;
+}
+
+.email + label,
+.password + label {
+  transition: 100ms ease-in;
+  transform: translate(4px, -14px);
+}
+
+.email:focus + label,
+.password:focus + label,
+.input-wrapper:not(.empty) .email + label,
+.input-wrapper:not(.empty) .password + label {
+  color: #dfdfdf;
+  transform: scale(0.8) translate(-8px, -250%);
+}
+
+/* valid icon */
+.valid-icon {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  top: 20%;
+  right: 8px;
+  width: var(--icon-box-size);
+  height: var(--icon-box-size);
+  background: no-repeat center / var(--icon-image-size);
+}
+.valid .valid-icon {
+  background-image: url("./assets/check.svg");
+}
+.invalid .valid-icon {
+  background-image: url("./assets/warn.svg");
+}
+.empty .valid-icon {
+  background-image: none;
+}
+
+/* 비밀번호 토글 아이콘 */
+.toggle-password-type {
+  position: absolute;
+  display: inline-block;
+  width: var(--icon-box-size);
+  height: var(--icon-box-size);
+  top: 20%;
+  right: 32px;
+  background: no-repeat center / var(--icon-image-size);
+  background-image: url("./assets/eye-open.svg");
+}
+.empty .toggle-password-type,
+.password-wrapper:not(:focus-within) .toggle-password-type {
+  visibility: hidden;
+}
+.password[type="password"] ~ .toggle-password-type {
+  background-image: url("./assets/eye-open.svg");
+}
+.password[type="text"] ~ .toggle-password-type {
+  background-image: url("./assets/eye-close.svg");
+}
+
+/* 알림 메세지 */
+.alert-message {
+  visibility: hidden;
+  position: absolute;
+  font-size: 0.75rem;
+  word-break: break-all;
+  padding-top: 4px;
+  color: var(--clr-warning);
+}
+.invalid .alert-message {
+  visibility: visible;
+}
+
+/* 아이디 저장 */
+.id-save {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+  gap: 4px;
+}
+
+.id-save input {
+  display: none;
+}
+
+.id-save label {
+  cursor: pointer;
+}
+
+.id-save .custom-icon {
+  float: left;
+  width: var(--icon-box-size);
+  height: var(--icon-box-size);
+  background: no-repeat center / var(--icon-image-size);
+  background-image: url(./assets/check-fill-unchecked.svg);
+}
+.id-save input:checked + .custom-icon {
+  background-image: url(./assets/check-fill.svg);
+}
+
+/* 로그인, 회원가입 버튼 */
+.btn-container {
+  margin-top: 60px;
+  display: grid;
+  gap: 16px;
+}
+
+.btn-container * {
+  text-align: center;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: 800;
+  padding: clamp(8px, 8vw, 14px);
+  cursor: pointer;
+
+  &.join-btn {
+    border: 1px solid currentColor;
+  }
+
+  &.login-btn {
+    color: #24388d;
+    background-color: #fff;
+  }
+}
+
+.login-btn:disabled {
+  user-select: none;
+  pointer-events: none;
+  color: #83817d;
+  background-color: #fefefe;
+  opacity: 0.8;
+}
+
+@media (min-width: 540px) {
+  .btn-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .login-container {
+    justify-content: space-around;
+    gap: 40px;
+  }
+
+  form {
+    gap: 20px;
+  }
+
+  input {
+    font-size: 1.125rem;
+  }
+
+  .btn-container {
+    margin-top: 40px;
+  }
+}
