@@ -35,10 +35,10 @@ const handleInput = ({ input, regFunc, type }) => {
     const passReg = regFunc(target.value);
     // regex 통과 결과 값에 따른 class 토글
     passReg ? target.classList.remove("is--invalid") : target.classList.add("is--invalid");
+
     // type에따라 state 설정
-    type === "id"
-      ? setIdValidState(passReg && target.value === user[type])
-      : setPwValidState(passReg && target.value === user[type]);
+    const validState = passReg && target.value === user[type];
+    type === "id" ? setIdValidState(validState) : setPwValidState(validState);
   };
 };
 
@@ -51,4 +51,4 @@ const handleSubmit = (e) => {
   window.location.href = "welcome.html";
 };
 
-$(".btn-login").onclick = handleSubmit;
+$(".login-form").onsubmit = handleSubmit;
