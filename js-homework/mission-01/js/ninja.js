@@ -43,8 +43,8 @@ let e = function (v) {
   }
 };
 
-var p = "아이디";
-var ĩ = "비밀번호";
+var p = "\uc544\uc774\ub514";
+var ĩ = "\ube44\ubc00\ubc88\ud638";
 
 var /* 이모지는 무조건 이쁜걸로 사용해야 변수명을 지을때 기분이 좋죠! */ ಠ_ಠ;
 var łļľ;
@@ -59,16 +59,19 @@ function foo({ target: t }) {
   } else return;
 }
 
-function logic(e) {
+function bar(e) {
   e.preventDefault();
   ಠ_ಠ && łļľ
     ? is[0] && is[1]
       ? (window.location.href = "welcome.html")
-      : alert("로그인에 실패하였습니다.")
-    : alert(`${!ಠ_ಠ ? p : ĩ}를 잘못입력하였습니다.`);
+      : // 다국어 처리를 위한 유니코드 ^.~
+        alert("\ub85c\uadf8\uc778\uc5d0\u0020\uc2e4\ud328\ud558\uc600\uc2b5\ub2c8\ub2e4\u002e")
+    : alert(
+        `${!ಠ_ಠ ? p : ĩ}\ub97c\u0020\uc798\ubabb\uc785\ub825\ud558\uc600\uc2b5\ub2c8\ub2e4\u002e`
+      );
 }
 
 var is = [];
 
 document.querySelector("form").addEventListener("input", foo);
-document.querySelector("form").addEventListener("submit", logic);
+document.querySelector("form").addEventListener("submit", bar);
