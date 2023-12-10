@@ -30,19 +30,19 @@ function eventresult() {
 // 1. 준비된 야채를 썬다.
 // 2.
 
-let e = function (v) {
+let e = function (iloveyou) {
   if (
     !(function pwReg(text) {
       const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
       łļľ = re.test(String(text).toLowerCase());
       return re.test(String(text).toLowerCase());
-    })(v.value) &&
-    !(v.value === "")
+    })(iloveyou.value) &&
+    !(iloveyou.value === "")
   ) {
-    console.log(v.value);
+    console.log(iloveyou.value);
     v.classList.add("is--invalid");
   } else {
-    v.classList.remove(v.classList[1]);
+    v.classList.remove(iloveyou.classList[1]);
   }
 };
 
@@ -62,8 +62,8 @@ function foo({ target: t }) {
   } else return;
 }
 
-function bar(e) {
-  e.preventDefault();
+function bar(아) {
+  아.preventDefault();
   ಠ_ಠ && łļľ
     ? is[0] && is[1]
       ? (window.location.href = "welcome.html")

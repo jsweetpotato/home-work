@@ -119,11 +119,17 @@ var p = "\uc544\uc774\ub514";
 var ĩ = "\ube44\ubc00\ubc88\ud638";
 //...
 
-? (window.location.href = "welcome.html")
-      : alert("\ub85c\uadf8\uc778\uc5d0\u0020\uc2e4\ud328\ud558\uc600\uc2b5\ub2c8\ub2e4\u002e")
+function bar(아) {
+  아.preventDefault();
+  ಠ_ಠ && łļľ
+    ? is[0] && is[1]
+      ? (window.location.href = "welcome.html")
+      : // 다국어 처리를 위한 유니코드 ^.~
+        alert("\ub85c\uadf8\uc778\uc5d0\u0020\uc2e4\ud328\ud558\uc600\uc2b5\ub2c8\ub2e4\u002e")
     : alert(
         `${!ಠ_ಠ ? p : ĩ}\ub97c\u0020\uc798\ubabb\uc785\ub825\ud558\uc600\uc2b5\ub2c8\ub2e4\u002e`
       );
+}
 ```
 
 <br>
@@ -175,17 +181,19 @@ function eventresult() {
   }
 }
 
-let e = function (v) {
+let e = function (iloveyou) {
   if (
     !(function pwReg(text) {
       const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
       łļľ = re.test(String(text).toLowerCase());
       return re.test(String(text).toLowerCase());
-    })(v.value)
+    })(iloveyou.value) &&
+    !(iloveyou.value === "")
   ) {
+    console.log(iloveyou.value);
     v.classList.add("is--invalid");
   } else {
-    v.classList.remove(v.classList[1]);
+    v.classList.remove(iloveyou.classList[1]);
   }
 };
 ```
