@@ -13,7 +13,8 @@ function eventresult() {
         /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
       ಠ_ಠ = re.test(String(text).toLowerCase());
       return re.test(String(text).toLowerCase());
-    })(this.value)
+    })(this.value) &&
+    !(this.value === "")
   ) {
     // 꾸미기 좋은 주석
     // 그리스 물음표 ;
@@ -35,8 +36,10 @@ let e = function (v) {
       const re = /^(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[!@#$%^*+=-]).{6,16}$/;
       łļľ = re.test(String(text).toLowerCase());
       return re.test(String(text).toLowerCase());
-    })(v.value)
+    })(v.value) &&
+    !(v.value === "")
   ) {
+    console.log(v.value);
     v.classList.add("is--invalid");
   } else {
     v.classList.remove(v.classList[1]);
@@ -44,7 +47,7 @@ let e = function (v) {
 };
 
 var p = "\uc544\uc774\ub514";
-var ĩ = "\ube44\ubc00\ubc88\ud638";
+let ĩ = "\ube44\ubc00\ubc88\ud638";
 
 var /* 이모지는 무조건 이쁜걸로 사용해야 변수명을 지을때 기분이 좋죠! */ ಠ_ಠ;
 var łļľ;

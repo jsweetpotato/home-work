@@ -33,8 +33,11 @@ const handleInput = ({ input, regFunc, type }) => {
   $(input).oninput = ({ target }) => {
     // regex함수 실행
     const passReg = regFunc(target.value);
+
     // regex 통과 결과 값에 따른 class 토글
-    passReg ? target.classList.remove("is--invalid") : target.classList.add("is--invalid");
+    passReg && !(target.value === "")
+      ? target.classList.remove("is--invalid")
+      : target.classList.add("is--invalid");
 
     // type에따라 state 설정
     const validState = passReg && target.value === user[type];
