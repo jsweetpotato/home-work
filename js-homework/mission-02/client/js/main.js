@@ -1,28 +1,29 @@
-import { data } from "./data.js";
-import { useState, $ } from "./utils.js";
+import { audiosSource, data } from "./data.js";
+import { useState, $, gui } from "./utils.js";
 import AudioPlayer from "./audio.js";
 
 /* 
-
 1. 클릭 이벤트 활성화
 2. nav 클릭시 배경 색상 변경
 3. 이미지 변경
 4. 텍스트 변경
 5. 함수 분리
 */
-
-const root = "./assets/audio/";
-const items = [
-  `${root}sunrise-groove.mp3`,
-  `${root}titanium.mp3`,
-  `${root}enchanted-chimes.mp3`,
-  `${root}drive-breakbeat.mp3`,
-].map((item) => new AudioPlayer(item));
-
-items.forEach((item) => item.volume(0.05));
-
 // 데이터 가공
 const name = data.map((item) => item.name.toLocaleLowerCase());
+
+const options = {
+  volume: 0.02,
+};
+
+const createAudio = (source) => new AudioPlayer(`./assets/audio/${source}.mp3`);
+
+const audios = audiosSource.map((source) => createAudio(source));
+audios.forEach((item) => item.volume(options.volume));
+
+gui
+  .add(options, "volume", 0.01, 1, 0.01)
+  .onFinishChange((v) => audios.forEach((item) => item.volume(v)));
 
 const title = $("h1");
 const nav = $("nav");
@@ -30,12 +31,10 @@ const body = $("body");
 const visualImg = $(".visual img");
 const visual = $(".visual");
 
-title.style.textTransform = "uppercase";
-
 const ACTIVE_CLASS = "is-active";
 
 const [seletedElem, setSelectedElem] = useState($(`.${ACTIVE_CLASS}`));
-const [currentAudio, setCurrentAudio] = useState(items[0]);
+const [currentAudio, setCurrentAudio] = useState(audios[0]);
 
 /**
  * class 제거 함수
@@ -56,7 +55,7 @@ const addClass = (elem, className) => {
 };
 
 /**
- * 주소 설정
+ * 이미지&비디오 엘리먼트 src 설정
  * @param {HTMLImageElement | HTMLVideoElement } elem
  * @param {string} src
  */
@@ -73,7 +72,7 @@ const setSrcAttribute = (elem, src) => {
 };
 
 /**
- * 주소 설정
+ * 이미지 엘리먼트 alt 설정
  * @param {HTMLImageElement} elem
  * @param {string} alt
  */
@@ -89,8 +88,13 @@ const setAltAttribute = (elem, alt) => {
   elem.alt = alt;
 };
 
+const setImageElemAttr = (elem, idx) => {
+  setSrcAttribute(elem, `./assets/${name[idx]}.jpeg`);
+  setAltAttribute(elem, data[idx].alt);
+};
+
 /**
- *
+ * 엘리먼트 innerText 설정
  * @param {HTMLElement} elem
  * @param {String} text
  */
@@ -99,7 +103,11 @@ const setInnerText = (elem, text) => {
   elem.innerText = text;
 };
 
-nav.addEventListener("click", (e) => {
+const setCardMaskImg = (name) => {
+  visual.style.setProperty("--mask", `url(../assets/${name}_mask.png)`);
+};
+
+const handleNavClick = (e) => {
   e.preventDefault();
 
   const li = e.target.closest("li");
@@ -108,30 +116,25 @@ nav.addEventListener("click", (e) => {
 
   const idx = li.dataset.index - 1;
 
-  visual.style.setProperty("--mask", `url(../assets/${name[idx]}_mask.png)`);
-
   removeClass(seletedElem(), ACTIVE_CLASS);
 
-  setSrcAttribute(visualImg, `./assets/${name[idx]}.jpeg`);
-  setAltAttribute(visualImg, data[idx].alt);
-
+  setCardMaskImg(name[idx]);
   setInnerText(title, name[idx]);
+  setImageElemAttr(visualImg, idx);
   body.style.background = `linear-gradient(to bottom, ${data[idx].color[0]}, ${data[idx].color[1]})`;
 
-  if (currentAudio().isPlaying()) {
-    // currentAudio().pause();
-    currentAudio().stop();
-  }
-
-  items[idx].play();
-
   setSelectedElem(li);
-  setCurrentAudio(items[idx]);
-
-  currentAudio().play();
   addClass(seletedElem(), ACTIVE_CLASS);
-});
 
-visual.onclick = () => {
+  if (currentAudio().isPlaying()) currentAudio().stop();
+  setCurrentAudio(audios[idx]);
+  currentAudio().play();
+};
+
+const handleVisualClick = (e) => {
+  e.preventDefault();
   currentAudio().isPlaying() ? currentAudio().pause() : currentAudio().play();
 };
+
+nav.addEventListener("click", handleNavClick);
+visual.addEventListener("click", handleVisualClick);

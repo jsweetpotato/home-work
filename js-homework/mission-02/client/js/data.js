@@ -20,3 +20,5 @@ export const data = [
     alt: "게일 포스터",
   },
 ];
+
+export const audiosSource = ["sunrise-groove", "titanium", "enchanted-chimes", "trap-future-bass"];

@@ -27,3 +27,5 @@ export function throttle(func, delay) {
     }, delay);
   };
 }
+
+export const gui = new GUI();

@@ -1,6 +1,8 @@
 :root {
   --rotate-x: 12deg;
   --rotate-y: 20deg;
+  --background-x: 50%;
+  --background-y: 50%;
   --pointer-x: 0%;
   --pointer-y: 0%;
   --space: 5%;
@@ -28,7 +30,7 @@
 
   --space: 5%;
   --angle: 133deg;
-  --imgsize: cover;
+  --imgsize: fill;
 
   --bars: 3%;
   --bar-color: hsla(0, 0%, 70%, 1);
@@ -36,11 +38,12 @@
 }
 .visual {
   max-height: 90vh;
+  margin-inline: auto;
+  margin-bottom: 1rem;
   position: relative;
   text-align: center;
-  margin-bottom: 1rem;
   overflow: hidden;
-  z-index: 1;
+  aspect-ratio: 3.4/5;
   will-change: transform;
   transition: transform 600ms;
 }
@@ -49,6 +52,13 @@
   transform: rotateX(var(--rotate-x)) rotateY(var(--rotate-y));
   transition: transform 200ms;
 }
+
+.card__shine,
+.card__glare {
+  will-change: transform, opacity, background-image, background-size, background-position,
+    background-blend-mode, filter;
+}
+
 .visual.hovered .card__shine,
 .visual.hovered .card__glare {
   opacity: 1;
@@ -59,6 +69,8 @@
   mask-image: var(--mask);
   mask-mode: alpha;
   mask-size: contain;
+  --imgsize: 100px;
+
   /* code by Simon Goellner */
   /* https://github.com/simeydotme/pokemon-cards-css */
   --scanlines-space: 1px;
@@ -99,42 +111,60 @@
       hsla(0, 0%, 0%, 0.25) 120%
     );
 
-  /* 원본 */
-  /* background-position: calc(calc(calc(50% - var(--pointer-x)) * 2.6) + 50%)
-      calc(calc(calc(50% - var(--pointer-y)) * 3.5) + 50%),
-    center center; */
-  background-position: calc(calc(calc(50% - var(--pointer-x)) * 0.6) + 50%)
-      calc(calc(calc(50% - var(--pointer-y)) * 0.5) + 50%),
-    center center;
+  background-size: var(--imgsize) 100%, 200% 700%, 400% 100%, 200% 100%;
+  background-position: 0%, 0% var(--background-y), var(--background-x) var(--background-y),
+    var(--background-x) var(--background-y);
 
-  background-size: 400% 400%, cover;
   background-blend-mode: screen, hue, hard-light;
   filter: brightness(0.8) contrast(2.95) saturate(0.65);
   mix-blend-mode: color-dodge;
-  /* opacity: var(--card-opacity); */
   opacity: 0;
 }
 
-.card__shine:after {
+.card__shine::after {
   content: "";
-  /* display: block;
+  display: grid;
   width: 100%;
-  height: 100%; */
+  height: 100%;
 
-  background-image: radial-gradient(
-    farthest-corner circle at var(--pointer-x) var(--pointer-y),
-    hsla(0, 0%, 90%, 0.8) 0%,
-    hsla(0, 0%, 78%, 0.1) 25%,
-    hsl(0, 0%, 0%) 90%
-  );
+  --space: 5%;
+  --angle: 133deg;
 
-  background-position: center center;
+  background-image: var(--grain),
+    repeating-linear-gradient(
+      0deg,
+      var(--sunpillar-clr-1) calc(var(--space) * 1),
+      var(--sunpillar-clr-2) calc(var(--space) * 2),
+      var(--sunpillar-clr-3) calc(var(--space) * 3),
+      var(--sunpillar-clr-4) calc(var(--space) * 4),
+      var(--sunpillar-clr-5) calc(var(--space) * 5),
+      var(--sunpillar-clr-6) calc(var(--space) * 6),
+      var(--sunpillar-clr-1) calc(var(--space) * 7)
+    ),
+    repeating-linear-gradient(
+      var(--angle),
+      #0e152e 0%,
+      hsl(180, 10%, 60%) 3.8%,
+      hsl(180, 29%, 66%) 4.5%,
+      hsl(180, 10%, 60%) 5.2%,
+      #0e152e 10%,
+      #0e152e 12%
+    ),
+    radial-gradient(
+      farthest-corner circle at var(--pointer-x) var(--pointer-y),
+      hsla(0, 0%, 0%, 0.1) 12%,
+      hsla(0, 0%, 0%, 0.15) 20%,
+      hsla(0, 0%, 0%, 0.25) 120%
+    );
 
-  background-size: cover;
+  background-size: 100% var(--imgsize), 200% 400%, 100% 100%, 200% 100%;
+  background-position: 0%, 0% var(--background-y),
+    calc(var(--background-x) * -1) calc(var(--background-y) * -1),
+    var(--background-x) var(--background-y);
 
-  mix-blend-mode: luminosity;
-  opacity: 1;
-  filter: brightness(0.6) contrast(4);
+  filter: brightness(1) contrast(2.5) saturate(1.75);
+  background-blend-mode: screen, hue, hard-light;
+  mix-blend-mode: soft-light;
 }
 
 .card__glare {
@@ -153,20 +183,10 @@
     hsla(0, 0%, 100%, 0.5) 20%,
     hsla(0, 0%, 0%, 0.5) 120%
   );
-
   background-position: center center;
-
   background-size: cover;
 
   mix-blend-mode: var(--blend-type);
   filter: brightness(0.6) contrast(4);
-  /* opacity: var(--card-opacity); */
   opacity: 0;
-}
-/* https://davidwalsh.name/css-variables-javascript */
-
-.card__shine,
-.card__glare {
-  will-change: transform, opacity, background-image, background-size, background-position,
-    background-blend-mode, filter;
 }

@@ -1,8 +1,6 @@
-import { $, throttle } from "./utils.js";
+import { $, throttle, gui } from "./utils.js";
 
 const visual = document.querySelector(".visual");
-
-const gui = new GUI();
 
 const size = {
   x: visual.clientWidth,
@@ -37,10 +35,19 @@ gui.add(options, "blendType", options.blendTypes).onFinishChange((value) => {
   visual.style.setProperty("--blend-type", value);
 });
 
+function getRange(min, max, value) {
+  return value * (max - min) + min;
+}
+
 function handlemove({ offsetX, offsetY }) {
   if (offsetX <= -1 || offsetY <= -1) return;
-  visual.style.setProperty("--pointer-x", `${(offsetX / size.x) * 100}%`);
-  visual.style.setProperty("--pointer-y", `${(offsetY / size.y) * 100}%`);
+  const x = offsetX / size.x;
+  const y = offsetY / size.y;
+
+  visual.style.setProperty("--pointer-x", `${x * 100}%`);
+  visual.style.setProperty("--pointer-y", `${y * 100}%`);
+  visual.style.setProperty("--background-x", `${getRange(40, 60, x)}%`);
+  visual.style.setProperty("--background-y", `${getRange(40, 60, y)}%`);
   visual.style.setProperty("--rotate-y", `${(size.x * 0.5 - offsetX) * options.density}deg`);
   visual.style.setProperty("--rotate-x", `${(size.y * 0.5 - offsetY) * -options.density}deg`);
 }
