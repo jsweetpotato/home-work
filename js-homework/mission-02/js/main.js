@@ -17,7 +17,6 @@ const options = {
 };
 
 const createAudio = (source) => new AudioPlayer(`./assets/audio/${source}.mp3`);
-
 const audios = audiosSource.map((source) => createAudio(source));
 audios.forEach((item) => item.volume(options.volume));
 
