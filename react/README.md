@@ -1,7 +1,7 @@
 # React 1주차 과제
 
 ## Preview
-![127 0 0 1_5173_(iPhone XR) | 200](https://github.com/jsweetpotato/home-work/assets/60402888/a9a56695-fed8-4f04-9c48-e3a10be992d9)
+![127 0 0 1_5173_(iPhone XR) | 200](https://github.com/jsweetpotato/home-work/assets/60402888/a9a56695-fed8-4f04-9c48-e3a10be992d9){: width="200" }
 
 <br>
 
