@@ -12,10 +12,10 @@ export const Header = () => {
   return (
     <div style={styleContainer}>
       <svg role="button" width="24" height="24" viewBox="0 0 22 22">
-        <use href="/assets/_sprite.svg#direction" />
+        <use href="/src/assets/_sprite.svg#direction" />
       </svg>
       <svg role="button" width="24" height="24" viewBox="0 0 22 22">
-        <use href="/assets/_sprite.svg#close" />
+        <use href="/src/assets/_sprite.svg#close" />
       </svg>
     </div>
   );
