@@ -21,11 +21,6 @@ const cancelBtn = {
   isValid: true,
 };
 
-const styleWrapper = { display: "flex", flexDirection: "column", gap: "4px", marginBlock: "12px" };
-const styleLabel = { fontWeight: "600", fontSize: "0.875rem", marginBottom: "4px" };
-const styleInput = { border: "1px solid #9DA1B4", borderRadius: "4px", padding: "8px 4px", width: "100%" };
-const styleSpan = { color: "#9DA1B4", alignSelf: "flex-end", fontSize: "0.875rem" };
-
 export const Login = () => {
   return (
     <div style={{ flexBasis: "100%", display: "flex", flexDirection: "column" }}>
