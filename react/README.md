@@ -6,7 +6,8 @@
 <br>
 
 ## 스캐폴딩
-![image](https://github.com/jsweetpotato/home-work/assets/60402888/09536fde-1dc6-4cf7-9f20-28f40a235cf2)
+![image](https://github.com/jsweetpotato/home-work/assets/60402888/26a48f57-608f-4e7f-a56d-aaa28fdf0d7e)
+
 
 
 <br>
