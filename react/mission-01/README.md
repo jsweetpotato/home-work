@@ -1,19 +1,21 @@
 # React 1주차 과제
 
 ## Preview
+
 <img src="https://github.com/jsweetpotato/home-work/assets/60402888/a9a56695-fed8-4f04-9c48-e3a10be992d9" width="360px"/>
 
 <br>
 
 ## 스캐폴딩
-![image](https://github.com/jsweetpotato/home-work/assets/60402888/09536fde-1dc6-4cf7-9f20-28f40a235cf2)
 
+![image](https://github.com/jsweetpotato/home-work/assets/60402888/26a48f57-608f-4e7f-a56d-aaa28fdf0d7e)
 
 <br>
 
 ## 구현 방식
 
 ### 1. 중복 사용 항목 컴포넌트로 분리
+
 input요소와 버튼 요소는 중복된 스타일과 기능을 가지고 있어 컴포넌트로 분리해서 구현했습니다.
 
 ```jsx
@@ -53,6 +55,7 @@ export const TextInput = ({ id, label, text = "여기에 글을 입력해주세�
 <br>
 
 ### 2. 최종 페이지와 Header를 조립해 App으로 export
+
 ```jsx
 import React from "react";
 import { Fragment } from "react";
@@ -72,6 +75,7 @@ export const App = () => {
 <br>
 
 ### 3. createRoot로 #app에 렌더
+
 ```jsx
 import React from "react";
 import { createRoot } from "react-dom/client";
@@ -82,4 +86,3 @@ const reactDomRoot = createRoot(rootElement);
 
 reactDomRoot.render(<App />);
 ```
-
