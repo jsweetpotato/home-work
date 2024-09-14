@@ -7,34 +7,34 @@ img {
 }
 
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: all 0.3s;
   background: linear-gradient(to bottom, #ff6a00, #720400);
   height: 100vh;
 }
 
 .container {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%) scale(0.7);
   perspective: 2000px;
 }
 
 .nickName {
   color: white;
-  font-size: 4rem;
+  font-size: max(16px, calc(40 / 14.4 * 1rem));
   text-align: center;
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
 
 .nav {
-  max-width: 600px;
+  margin-inline: auto;
+  width: calc(245 / 14.4 * 2vh);
 }
 
 .nav ul {
   display: flex;
-  gap: 1rem;
+  gap: calc(8 / 14.4 * 1vh);
 }
 
 .nav ul li {

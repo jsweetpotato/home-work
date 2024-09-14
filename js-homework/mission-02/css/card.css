@@ -36,8 +36,9 @@
   --bar-color: hsla(0, 0%, 70%, 1);
   --bar-bg: hsla(0, 0%, 0%, 1);
 }
+
 .visual {
-  max-height: 90vh;
+  max-height: 50vh;
   margin-inline: auto;
   margin-bottom: 1rem;
   position: relative;
@@ -55,8 +56,7 @@
 
 .card__shine,
 .card__glare {
-  will-change: transform, opacity, background-image, background-size, background-position,
-    background-blend-mode, filter;
+  will-change: transform, opacity, background-image, background-size, background-position, background-blend-mode, filter;
 }
 
 .visual.hovered .card__shine,
@@ -95,25 +95,11 @@
       var(--sunpillar-clr-6) calc(var(--space) * 6),
       var(--sunpillar-clr-1) calc(var(--space) * 7)
     ),
-    repeating-linear-gradient(
-      var(--angle),
-      #0e152e 0%,
-      hsl(180, 10%, 60%) 3.8%,
-      hsl(180, 29%, 66%) 4.5%,
-      hsl(180, 10%, 60%) 5.2%,
-      #0e152e 10%,
-      #0e152e 12%
-    ),
-    radial-gradient(
-      farthest-corner circle at var(--pointer-x) var(--pointer-y),
-      hsla(0, 0%, 0%, 0.1) 12%,
-      hsla(0, 0%, 0%, 0.15) 20%,
-      hsla(0, 0%, 0%, 0.25) 120%
-    );
+    repeating-linear-gradient(var(--angle), #0e152e 0%, hsl(180, 10%, 60%) 3.8%, hsl(180, 29%, 66%) 4.5%, hsl(180, 10%, 60%) 5.2%, #0e152e 10%, #0e152e 12%),
+    radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsla(0, 0%, 0%, 0.1) 12%, hsla(0, 0%, 0%, 0.15) 20%, hsla(0, 0%, 0%, 0.25) 120%);
 
   background-size: var(--imgsize) 100%, 200% 700%, 400% 100%, 200% 100%;
-  background-position: 0%, 0% var(--background-y), var(--background-x) var(--background-y),
-    var(--background-x) var(--background-y);
+  background-position: 0%, 0% var(--background-y), var(--background-x) var(--background-y), var(--background-x) var(--background-y);
 
   background-blend-mode: screen, hue, hard-light;
   filter: brightness(0.8) contrast(2.95) saturate(0.65);
@@ -141,26 +127,11 @@
       var(--sunpillar-clr-6) calc(var(--space) * 6),
       var(--sunpillar-clr-1) calc(var(--space) * 7)
     ),
-    repeating-linear-gradient(
-      var(--angle),
-      #0e152e 0%,
-      hsl(180, 10%, 60%) 3.8%,
-      hsl(180, 29%, 66%) 4.5%,
-      hsl(180, 10%, 60%) 5.2%,
-      #0e152e 10%,
-      #0e152e 12%
-    ),
-    radial-gradient(
-      farthest-corner circle at var(--pointer-x) var(--pointer-y),
-      hsla(0, 0%, 0%, 0.1) 12%,
-      hsla(0, 0%, 0%, 0.15) 20%,
-      hsla(0, 0%, 0%, 0.25) 120%
-    );
+    repeating-linear-gradient(var(--angle), #0e152e 0%, hsl(180, 10%, 60%) 3.8%, hsl(180, 29%, 66%) 4.5%, hsl(180, 10%, 60%) 5.2%, #0e152e 10%, #0e152e 12%),
+    radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsla(0, 0%, 0%, 0.1) 12%, hsla(0, 0%, 0%, 0.15) 20%, hsla(0, 0%, 0%, 0.25) 120%);
 
   background-size: 100% var(--imgsize), 200% 400%, 100% 100%, 200% 100%;
-  background-position: 0%, 0% var(--background-y),
-    calc(var(--background-x) * -1) calc(var(--background-y) * -1),
-    var(--background-x) var(--background-y);
+  background-position: 0%, 0% var(--background-y), calc(var(--background-x) * -1) calc(var(--background-y) * -1), var(--background-x) var(--background-y);
 
   filter: brightness(1) contrast(2.5) saturate(1.75);
   background-blend-mode: screen, hue, hard-light;
@@ -177,12 +148,7 @@
 
   /* code by Simon Goellner */
   /* https://github.com/simeydotme/pokemon-cards-css */
-  background: radial-gradient(
-    farthest-corner circle at var(--pointer-x) var(--pointer-y),
-    hsl(0, 0%, 100%) 10%,
-    hsla(0, 0%, 100%, 0.5) 20%,
-    hsla(0, 0%, 0%, 0.5) 120%
-  );
+  background: radial-gradient(farthest-corner circle at var(--pointer-x) var(--pointer-y), hsl(0, 0%, 100%) 10%, hsla(0, 0%, 100%, 0.5) 20%, hsla(0, 0%, 0%, 0.5) 120%);
   background-position: center center;
   background-size: cover;
 
