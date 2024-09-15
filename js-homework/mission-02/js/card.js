@@ -4,11 +4,11 @@ const visual = document.querySelector(".visual");
 
 const size = {
   x: visual.clientWidth,
-  y: visual.clientHeight,
+  y: visual.clientHeight
 };
 
 const options = {
-  density: 0.15,
+  speed: 0.15,
   throttleTime: 15,
   blendType: getComputedStyle(visual).getPropertyValue("--blend-type"),
   blendTypes: {
@@ -24,13 +24,13 @@ const options = {
     lighten: "lighten",
     screen: "screen",
     normal: "normal",
-    hue: "hue",
-  },
+    hue: "hue"
+  }
 };
 
 let opacity = 0;
 
-gui.add(options, "density", 0.05, 0.5, 0.01);
+gui.add(options, "speed", 0.05, 0.5, 0.01);
 gui.add(options, "blendType", options.blendTypes).onFinishChange((value) => {
   visual.style.setProperty("--blend-type", value);
 });
@@ -48,8 +48,8 @@ function handlemove({ offsetX, offsetY }) {
   visual.style.setProperty("--pointer-y", `${y * 100}%`);
   visual.style.setProperty("--background-x", `${getRange(40, 60, x)}%`);
   visual.style.setProperty("--background-y", `${getRange(40, 60, y)}%`);
-  visual.style.setProperty("--rotate-y", `${(size.x * 0.5 - offsetX) * options.density}deg`);
-  visual.style.setProperty("--rotate-x", `${(size.y * 0.5 - offsetY) * -options.density}deg`);
+  visual.style.setProperty("--rotate-y", `${(size.x * 0.5 - offsetX) * options.speed}deg`);
+  visual.style.setProperty("--rotate-x", `${(size.y * 0.5 - offsetY) * -options.speed}deg`);
 }
 
 const resize = () => {
